@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="icon" type="image/x-icon" href="https://elektroopalennya.kiev.ua/wp-content/uploads/2022/07/cropped-pngwing.com_-1.png">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Driving Experiences</title>
+        <script>
+            let listWeather=[
+            {
+                "weather":"sunny",
+                "idWeather":1
+            },
+            {
+                "weather":"clear",
+                "idWeather":2
+            },
+            {
+                "weather":"partlyCloudy",
+                "idWeather":3
+            },
+            {
+                "weather":"mistyFoggy",
+                "idWeather":4
+            },
+            {
+                "weather":"cloudy",
+                "idWeather":5
+            },
+            {
+                "weather":"rainy",
+                "idWeather":6
+            },
+            {
+                "weather":"snowy",
+                "idWeather":7
+            },
+            {
+                "weather":"sandstorm",
+                "idWeather":8
+            },
+            {
+                "weather":"stormy",
+                "idWeather":9
+            },
+            {
+                "weather":"tempestuous",
+                "idWeather":10
+            }
+        ]
+            let listRoadTypes=[
+            {
+                "roadType": "concrete",
+                "idRoadType": 1
+            },
+            {
+                "roadType": "rocks",
+                "idRoadType": 2
+            },
+            {
+                "roadType": "ice",
+                "idRoadType": 3
+            },
+            {
+                "roadType": "sand",
+                "idRoadType": 4
+            },
+            {
+                "roadType": "mudOrDirt",
+                "idRoadType": 5
+            }
+            ]
+            let listTransmissionTypes=[
+            {
+                "transmissionType":"automatic",
+                "idTransmission": 1
+            },
+            {
+                "transmissionType":"manual",
+                "idTransmission": 2
+            }
+            ]
+            let listTrafficTypes= [
+            {
+                "trafficType":"none",
+                "idTrafficType": 1
+            },
+            {
+                "trafficType":"light",
+                "idTrafficType": 2
+            },
+            {
+                "trafficType":"heavy",
+                "idTrafficType": 3
+            }
+            ]
+            
+            console.log(listWeather);
+            console.log(listRoadTypes);
+            console.log(listTrafficTypes);
+            console.log(listTransmissionTypes);
+
+            var hours, minutes;
+            var retrievedListExperiences = new Array();
+
+            function removeExperience(){
+                    var select = document.getElementById('idRemoveExp');
+                    var selectedId = select.value;
+
+                    if (selectedId){
+                        var i = retrievedListExperiences.findIndex(experience => experience.idExperience == selectedId);
+                            retrievedListExperiences.splice(i, 1);
+                            localStorage.setItem('listExperiences', JSON.stringify(retrievedListExperiences));
+                            location.reload();
+                    }
+                    else{
+                        alert('No experience selected.');
+                    }
+                }
+            
+            document.addEventListener('DOMContentLoaded', function(){
+                
+
+                var experiencesContainer = document.getElementById('experiences');
+                
+                function showExperiences(){
+                        if (Array.isArray(retrievedListExperiences)){
+                            retrievedListExperiences.forEach(function(experience){
+                                var weather = listWeather.find(item => item.idWeather == experience.idWeather);
+                                var road = listRoadTypes.find(item => item.idRoadType == experience.idRoadType);
+                                var traffic = listTrafficTypes.find(item => item.idTrafficType == experience.idTrafficType);
+                                var transmission = listTransmissionTypes.find(item => item.idTransmission == experience.idTransmissionType);
+                                
+                                let newInfo = `
+                                    <div class='newExp'>
+                                    <h3>Experience number ${experience.idExperience}</h3>
+                                    <p>Date: ${experience.date}</p>
+                                    <p>Time: ${hours} hours and ${minutes} minutes</p>
+                                    <p>Distance: ${experience.distance} km</p>
+                                    <p>Weather: ${weather.weather}</p>
+                                    <p>Road type: ${road.roadType}</p>
+                                    <p>Traffic heaviness: ${traffic.trafficType}</p>
+                                    <p>Transmission type: ${transmission.transmissionType}</p>
+                                    </div><br><br>
+                                    
+                                `;
+
+                                experiencesContainer.insertAdjacentHTML('beforeend', newInfo);
+                                
+                            });
+                        } 
+                        else{
+                            console.error('retrievedListExperiences is not an array.');
+                        }
+                    }
+                    
+                    retrievedListExperiences = JSON.parse(localStorage.getItem('listExperiences'));
+                    console.log(retrievedListExperiences);
+
+                    retrievedListExperiences.forEach(function(experience){
+                        hours = experience.time / 60;
+                        minutes = experience.time % 60;
+                        hours = Math.floor(hours);
+                        minutes = Math.ceil(minutes);
+                        console.log(experience.idExperience, experience.date, experience.time, hours, minutes, experience.distance, experience.weather, experience.roadType, experience.trafficType, experience.transmissionType);
+                    });
+
+                    showExperiences();
+            });
+        </script>
+        <style>
+            .ryangosling{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                
+            }
+            #gosling{
+                font-size: 12px;
+                color: burlywood;
+                
+            }
+            audio::-webkit-media-controls-panel{
+                background-color: rgb(255, 228, 196);
+                color: slategray;
+                border: 5px;
+            }
+            main fieldset{
+                background-color: rgb(255, 228, 196, 0.8);
+                background-image: url(https://i.guim.co.uk/img/static/sys-images/Guardian/About/General/2011/9/14/1315997543282/ryan-gosling-in-drive-007.jpg?width=620&dpr=2&s=none);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-blend-mode: screen;
+                background-attachment: local;
+            }
+            body{
+                margin: 1em;
+                font-family:'Courier New', Courier, monospace; 
+                background-color: slategray;
+                align-self: center;
+            }
+            h1, h1+h2, br+h2{
+                color: blanchedalmond;
+                text-align: center;
+            }
+            #ifNoElement, .newExp{
+                margin-left: 125px;
+                margin-right: 125px;
+                border: 4px ridge saddlebrown;
+                border-radius: 5px;
+                background-color:bisque;
+                text-align: center;
+                color: saddlebrown;
+                text-shadow: saddlebrown 0.5px 0.5px;
+                box-sizing: border-box;
+                font-family: 'Courier New', Courier, monospace;
+            }
+            button,fieldset,legend{    
+                border: 4px ridge saddlebrown;
+                border-radius: 5px;
+                background-color:bisque;
+                text-align: center;
+                color: saddlebrown;
+                text-shadow: saddlebrown 0.5px 0.5px;
+                box-sizing: border-box;
+                font-family: 'Courier New', Courier, monospace;
+            }
+            button:active{
+                background-color: burlywood;
+            }
+            legend{
+                width: 250px;
+                height:auto;
+            }
+            input{
+                border: 4px ridge saddlebrown;
+                border-radius: 5px;
+                background-color: slategray;
+                text-align: justify;
+                font-size: 1em;
+                color:black;
+            }
+            textarea::placeholder{
+                color:blanchedalmond;
+                font-family: 'Courier New', Courier, monospace;
+                text-align: justify;
+            }
+            input:invalid, select:invalid{
+                border-color: red;
+                color: blanchedalmond;
+                text-shadow: saddlebrown 2px 2px 2px
+            }
+            input:valid, select:valid{
+                border-color: greenyellow;
+                color: blanchedalmond;
+                text-shadow: saddlebrown 2px 2px 2px
+            }
+            select{
+                width: 150px;
+                height: 30px;
+                font-family: 'Courier New', Courier, monospace;
+                text-align: center;
+                background-color: slategray;
+                color: blanchedalmond;
+                text-shadow: saddlebrown 2px 2px 2px;
+                border: 4px ridge saddlebrown;
+                border-radius: 5px;
+            }
+            input::placeholder{
+                font-family: 'Courier New', Courier, monospace;
+                text-align: center;
+                background-color: slategray;
+                color: blanchedalmond;
+                text-shadow: saddlebrown 2px 2px 2px;
+            }
+            a:link{
+            color: burlywood;
+            background-color: transparent;
+            text-decoration: none;
+            }
+            a:visited{
+            color: saddlebrown;
+            background-color: transparent;
+            text-decoration: none;
+            }
+            a:hover, a:active{
+            color:peru;
+            background-color: transparent;
+            text-decoration: none;
+            }
+
+            @media screen and (max-width: 640px){
+                #ifNoElement, .newExp{
+                    margin-left: 20px;
+                    margin-right: 20px;
+                }
+                body{
+                    display: grid;
+                    grid-template-rows: minmax(30px, auto) minmax(auto, 1fr) minmax(30px, auto);
+                    grid-gap: 1em;
+                    box-sizing: border-box;
+                    margin: 1em auto;
+                    display: block;
+                    width: 90%;
+                }
+
+                legend{
+                    max-width: 200px;
+                }
+
+                fieldset{
+                    margin: 1em auto;
+                }
+
+                header, footer{
+                    min-height: 40px;
+                }
+
+                article{
+                    min-height: 400px;
+                }
+
+                button,fieldset,legend{    
+                    border: 4px ridge saddlebrown;
+                    border-radius: 5px;
+                    background-color:bisque;
+                    text-align: center;
+                    color: saddlebrown;
+                    text-shadow: saddlebrown 0.5px 0.5px;
+                    box-sizing: border-box;
+                    font-family: 'Courier New', Courier, monospace;
+                }
+                select{
+                    min-width: 50px;
+                    max-width: 300px;
+                }
+                input::placeholder{
+                    font-family: 'Courier New', Courier, monospace;
+                    text-align: center;
+                    background-color: slategray;
+                    color: blanchedalmond;
+                    text-shadow: saddlebrown 2px 2px 2px;
+                }
+                
+            } 
+        </style>
+    </head>
+    <body>
+        <header><h1>Web page to see your driving experiences</h1>
+            <h2>Static web form page (You don't need this if you're not Prof. Eric): <a href="https://emiliaveron.alwaysdata.net/Driving/DrivingExperienceWebForm">[Link]</a><br>
+                If you want to add an experience, click here: <a href="https://emiliaveron.alwaysdata.net/Driving/DynamicWebForm">[Link]</a></h2><br>
+                <h2>Listen to this cool Ryan Gosling Drive audio while you're reading your experiences :D</h2></header>
+        <div class="ryangosling">
+        <audio id="ryan" controls loop>
+            <source src="ryangosling.mp3" type="audio/mpeg">
+            your browser doesn't support my sigma Ryan Gosling Audio :(
+        </audio></div><br>
+        <main>
+            <fieldset id="experiencesFieldset">
+                <legend>Your experiences:</legend><br>
+                <h3>To add a new experience, click the link in the beginning of the site!</h3><br>
+                <div id="experiences">
+                </div>
+                <br>
+                <form>
+                    <label for="idRemoveExp">If you would like to delete an experience, choose here and press the button:<br></labeL>    
+                    <select id="idRemoveExp">
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function(){
+                                    if (Array.isArray(retrievedListExperiences)){
+                                        retrievedListExperiences.forEach(function(item){
+                                            let option = `<option value="${item.idExperience}">Experience ${item.idExperience}</option>`;
+                                            document.getElementById('idRemoveExp').insertAdjacentHTML('beforeend', option);
+                                        });
+                                    } 
+                                    else{
+                                        console.log('retrievedListExperiences is not an array');
+                                    }
+                                })
+                                
+                            </script>
+                    </select>
+                    <button type="button" id="removeExp" onclick="removeExperience()">
+                        Remove experience
+                    </button>
+                    <br><br>
+                    <button type="button" id="deleteExp" onclick="localStorage.clear(); location.reload();">Remove all experiences</button><br><br>
+                </form>
+            </fieldset>
+        </main>
+        <br>
+        <footer>
+            <fieldset>
+                <h2><span>Information about the creator</span></h2>
+                    <p>Emiliya Yavarova - UFAZ CS-22 student</p>
+                    <address>
+                        Email: <a href="mailto:e.yavarova@ufaz.az">e.yavarova@ufaz.az</a><br>
+                        Phone number: <a href="tel:+1234567890">+(99451)-491-67-28</a>
+                    </address>
+            </fieldset>
+        </footer>
+    </body>
+</html>
+
+
+

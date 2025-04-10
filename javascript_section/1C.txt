@@ -1,0 +1,48 @@
+[
+  {
+    "roadType": "concrete",
+    "idConditions": 1
+  },
+  {
+    "roadType": "rocks",
+    "idConditions": 2
+  },
+  {
+    "roadType": "ice",
+    "idConditions": 3
+  },
+  {
+    "roadType": "sand",
+    "idConditions": 4
+  },
+  {
+    "roadType": "mudOrDirt",
+    "idConditions": 5
+  }
+]
+
+[
+  {
+    "trafficType":"light",
+    "idConditions": 1
+  },
+  {
+    "trafficType":"none",
+    "idConditions": 2
+  },
+  {
+    "trafficType":"heavy",
+    "idConditions": 3
+  }
+]
+
+[
+  {
+    "transmissionType":"automatic",
+    "idConditions": 1
+  },
+  {
+    "transmissionType":"manual",
+    "idConditions": 2
+  }
+]

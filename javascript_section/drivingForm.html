@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Driving Experience Form</title>
+        <style>
+            body{
+                margin: 1em;
+                font-family:'Courier New', Courier, monospace; 
+                background-color: slategray;
+                align-self: center;
+            }
+            h1,h1+h2{
+                color: blanchedalmond;
+                text-align: center;
+            }
+            button,fieldset,legend{    
+                border: 4px ridge saddlebrown;
+                border-radius: 5px;
+                background-color:bisque;
+                text-align: center;
+                color: saddlebrown;
+                text-shadow: saddlebrown 0.5px 0.5px;
+                box-sizing: border-box;
+                font-family: 'Courier New', Courier, monospace;
+            }
+            legend{
+                width: 250px;
+                height:auto;
+            }
+            input{
+                border: 4px ridge saddlebrown;
+                border-radius: 5px;
+                background-color: slategray;
+                text-align: justify;
+                font-size: 1em;
+                color:black;
+            }
+            textarea::placeholder{
+                color:blanchedalmond;
+                font-family: 'Courier New', Courier, monospace;
+                text-align: justify;
+            }
+            input:invalid, select:invalid{
+                border-color: red;
+                color: blanchedalmond;
+                text-shadow: saddlebrown 2px 2px 2px
+            }
+            input:valid, select:valid{
+                border-color: greenyellow;
+                color: blanchedalmond;
+                text-shadow: saddlebrown 2px 2px 2px
+            }
+            select{
+                width: 350px;
+                height: 30px;
+                font-family: 'Courier New', Courier, monospace;
+                text-align: center;
+                background-color: slategray;
+                color: blanchedalmond;
+                text-shadow: saddlebrown 2px 2px 2px;
+                border: 4px ridge saddlebrown;
+                border-radius: 5px;
+            }
+            input::placeholder{
+                font-family: 'Courier New', Courier, monospace;
+                text-align: center;
+                background-color: slategray;
+                color: blanchedalmond;
+                text-shadow: saddlebrown 2px 2px 2px;
+            }
+            a:link{
+            color: burlywood;
+            background-color: transparent;
+            text-decoration: none;
+            }
+            a:visited{
+            color: saddlebrown;
+            background-color: transparent;
+            text-decoration: none;
+            }
+            a:hover, a:active{
+            color:peru;
+            background-color: transparent;
+            text-decoration: none;
+            }
+            @media screen and (max-width: 640px){
+                body {
+                    display: grid;
+                    grid-template-rows: minmax(30px, auto) minmax(auto, 1fr) minmax(30px, auto);
+                    grid-gap: 1em;
+                    box-sizing: border-box;
+                }
+
+                header, footer{
+                    min-height: 40px;
+                }
+
+                article {
+                    min-height: 400px;
+                }
+                
+            } 
+        </style>
+    </head>
+    <body>
+        <header><h1>Web form for the driving experience</h1>
+        <h2>See all your driving experiences: <a href="https://emiliaveron.alwaysdata.net/Driving/SeeExperiences">[Link]</a></h2></header>
+        
+        <main>
+        <fieldset><legend>Fill this form</legend><br>
+        <form action="driveExperience.php" method="post">
+            The date of the experience  <input type="date" name="date" required><br><br>
+            The start time  <input type="time" name="startTime" required><br><br>
+            The end time  <input type="time" name="endTime" required><br><br>
+            The distance in kilometers  <input type="text" name="distanceKM" placeholder="An integer here" required><br><br>
+
+            
+
+
+            <select name="idWeather" required>
+                <option value="">-- Choose the weather conditions --</option>
+                <option value="1">Sunny</option>
+                <option value="2">Clear</option>
+                <option value="4">Partly cloudy</option> 
+                <option value="3">Misty or foggy</option>
+                <option value="5">Cloudy</option>
+                <option value="6">Rainy</option>
+                <option value="7">Snowy</option>   
+                <option value="8">Sandstorm</option>  
+                <option value="9">Stormy</option> 
+                <option value="10">Tempestuous</option> 
+            </select>
+            <br><br>
+            <select name="idRoadType" required>
+                <option value="">-- Choose the road type --</option>
+                <option value="1">Concrete</option>
+                <option value="2">Rocks</option>
+                <option value="3">Ice</option>
+                <option value="4">Sand</option> 
+                <option value="5">Mud or dirt</option>
+            </select>
+            <br><br>
+            <select name="idTrafficType" required>
+                <option value="">-- Choose the traffic severity --</option>
+                <option value="1">None</option>
+                <option value="2">Light</option>
+                <option value="3">Heavy</option>
+            </select>
+            <br><br>
+            <select name="idTransmissionType" required>
+                <option value="">-- Choose the car's transmission type --</option>
+                <option value="1">Manual</option>
+                <option value="2">Automatic</option>
+            </select>
+            <br><br>
+
+            <button type="button">Send</button><br><br>
+        </form>
+        </fieldset>
+        </main>
+
+        <footer>
+            <fieldset>
+                <h2><span>Information about the creator</span></h2>
+                    <p>Emiliya Yavarova - UFAZ CS-22 student</p>
+                    <address>
+                        Email: <a href="mailto:e.yavarova@ufaz.az">e.yavarova@ufaz.az</a><br>
+                        Phone number: <a href="tel:+1234567890">+(99451)-491-67-28</a>
+                    </address>
+            </fieldset>
+        </footer>
+    </body>
+</html>
+
+
+

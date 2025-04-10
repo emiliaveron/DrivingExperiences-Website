@@ -1,0 +1,7 @@
+{
+    "date": "2023-11-06",
+    "startTime": "19:14",
+    "endTime": "20:06",
+    "kilometers": 45,
+    "idExperience": 1
+  }

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="icon" type="image/x-icon" href="https://elektroopalennya.kiev.ua/wp-content/uploads/2022/07/cropped-pngwing.com_-1.png">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Driving Experience Form</title>
+        <style>
+            .ryangosling{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                
+            }
+            .ryangosling{
+                display: flex;
+                align-self: center;
+            }
+            #gosling{
+                font-size: 12px;
+                color: burlywood;
+                
+            }
+            audio::-webkit-media-controls-panel{
+                background-color: rgb(255, 228, 196);
+                color: slategray;
+                border: 5px;
+            }
+            main fieldset{
+                background-color: rgb(255, 228, 196, 0.8);
+                background-image: url(https://i.guim.co.uk/img/static/sys-images/Guardian/About/General/2011/9/14/1315997543282/ryan-gosling-in-drive-007.jpg?width=620&dpr=2&s=none);
+                background-size:cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-blend-mode:screen;
+                background-attachment: scroll;
+                margin: 1em auto;
+            }
+            body{
+                margin: 1em;
+                font-family:'Courier New', Courier, monospace; 
+                background-color: slategray;
+                align-self: center;
+            }
+            h1,h1+h2, br+h2{
+                color: blanchedalmond;
+                text-align: center;
+            }
+            button:active{
+                background-color: burlywood;
+            }
+            button,fieldset,legend{    
+                border: 4px ridge saddlebrown;
+                border-radius: 5px;
+                background-color:bisque;
+                text-align: center;
+                color: saddlebrown;
+                text-shadow: saddlebrown 0.5px 0.5px;
+                box-sizing: border-box;
+                font-family: 'Courier New', Courier, monospace;
+            }
+            legend{
+                width: 250px;
+                height:auto;
+            }
+            input{
+                border: 4px ridge saddlebrown;
+                border-radius: 5px;
+                background-color: slategray;
+                text-align: justify;
+                font-size: 1em;
+                color:black;
+            }
+            textarea::placeholder{
+                color:blanchedalmond;
+                font-family: 'Courier New', Courier, monospace;
+                text-align: justify;
+            }
+            input:invalid, select:invalid{
+                border-color: red;
+                color: blanchedalmond;
+                text-shadow: saddlebrown 2px 2px 2px
+            }
+            input:valid, select:valid{
+                border-color: greenyellow;
+                color: blanchedalmond;
+                text-shadow: saddlebrown 2px 2px 2px
+            }
+            select{
+                width: 350px;
+                height: 30px;
+                font-family: 'Courier New', Courier, monospace;
+                text-align: center;
+                background-color: slategray;
+                color: blanchedalmond;
+                text-shadow: saddlebrown 2px 2px 2px;
+                border: 4px ridge saddlebrown;
+                border-radius: 5px;
+            }
+            input::placeholder{
+                font-family: 'Courier New', Courier, monospace;
+                text-align: center;
+                background-color: slategray;
+                color: blanchedalmond;
+                text-shadow: saddlebrown 2px 2px 2px;
+            }
+            a:link{
+            color: burlywood;
+            background-color: transparent;
+            text-decoration: none;
+            }
+            a:visited{
+            color: saddlebrown;
+            background-color: transparent;
+            text-decoration: none;
+            }
+            a:hover, a:active{
+            color:peru;
+            background-color: transparent;
+            text-decoration: none;
+            }
+            @media screen and (max-width: 640px){
+                body{
+                    display: grid;
+                    grid-template-rows: minmax(30px, auto) minmax(auto, 1fr) minmax(30px, auto);
+                    grid-gap: 1em;
+                    box-sizing: border-box;
+                    margin: 1em auto;
+                    display: block;
+                    width: 90%;
+                }
+                
+                fieldset{
+                    margin: 1em auto;
+                }
+
+                header, footer{
+                    min-height: 40px;
+                }
+
+                article{
+                    min-height: 400px;
+                }
+
+                legend{
+                    max-width: 200px;
+                }
+
+                button,fieldset,legend{    
+                    border: 4px ridge saddlebrown;
+                    border-radius: 5px;
+                    background-color:bisque;
+                    text-align: center;
+                    color: saddlebrown;
+                    text-shadow: saddlebrown 0.5px 0.5px;
+                    box-sizing: border-box;
+                    font-family: 'Courier New', Courier, monospace;
+                }
+                select{
+                    min-width: 50px;
+                    max-width: 230px;
+                }
+                input::placeholder{
+                    font-family: 'Courier New', Courier, monospace;
+                    text-align: center;
+                    background-color: slategray;
+                    color: blanchedalmond;
+                    text-shadow: saddlebrown 2px 2px 2px;
+                }
+                button{
+                    max-width: 180px;
+                }
+                
+                
+            } 
+        </style>
+        <script>
+            let listExperiences = new Array();
+            let listWeather=[
+            {
+                "weather":"sunny",
+                "idWeather":1
+            },
+            {
+                "weather":"clear",
+                "idWeather":2
+            },
+            {
+                "weather":"partlyCloudy",
+                "idWeather":3
+            },
+            {
+                "weather":"mistyFoggy",
+                "idWeather":4
+            },
+            {
+                "weather":"cloudy",
+                "idWeather":5
+            },
+            {
+                "weather":"rainy",
+                "idWeather":6
+            },
+            {
+                "weather":"snowy",
+                "idWeather":7
+            },
+            {
+                "weather":"sandstorm",
+                "idWeather":8
+            },
+            {
+                "weather":"stormy",
+                "idWeather":9
+            },
+            {
+                "weather":"tempestuous",
+                "idWeather":10
+            }
+        ]
+            let listRoadTypes=[
+            {
+                "roadType": "concrete",
+                "idRoadType": 1
+            },
+            {
+                "roadType": "rocks",
+                "idRoadType": 2
+            },
+            {
+                "roadType": "ice",
+                "idRoadType": 3
+            },
+            {
+                "roadType": "sand",
+                "idRoadType": 4
+            },
+            {
+                "roadType": "mudDirt",
+                "idRoadType": 5
+            }
+            ]
+            let listTransmissionTypes=[
+            {
+                "transmissionType":"automatic",
+                "idTransmission": 1
+            },
+            {
+                "transmissionType":"manual",
+                "idTransmission": 2
+            }
+            ]
+            let listTrafficTypes= [
+            {
+                "trafficType":"none",
+                "idTrafficType": 1
+            },
+            {
+                "trafficType":"light",
+                "idTrafficType": 2
+            },
+            {
+                "trafficType":"heavy",
+                "idTrafficType": 3
+            }
+            ]
+
+            function saveData(){
+                if (document.querySelector('form').checkValidity() == false){
+                    return;
+                }
+                var date = document.getElementById('date').value;
+                var startTime = document.getElementById('startTime').value;
+                var endTime = document.getElementById('endTime').value;
+                
+                let start_time_str_hours, start_time_str_minutes;
+                [start_time_str_hours, start_time_str_minutes] = startTime.split(":");
+                let end_time_str_hours, end_time_str_minutes;
+                [end_time_str_hours, end_time_str_minutes] = endTime.split(":");
+
+                let time_hours = parseInt(end_time_str_hours) - parseInt(start_time_str_hours);
+                let time_minutes = parseInt(end_time_str_minutes) - parseInt(start_time_str_minutes);
+
+                var time = Math.abs(time_hours*60 + time_minutes);
+
+                var distance = parseInt(document.getElementById('distanceKM').value);
+                
+                var theIdWeather=parseInt(document.getElementById('idWeather').value, 10);
+                var theIdRoadType=parseInt(document.getElementById('idRoadType').value,10);
+                var theIdTrafficType=parseInt(document.getElementById('idTrafficType').value,10);
+                var theIdTransmission=parseInt(document.getElementById('idTransmission').value,10);
+
+                var newIdExperience = listExperiences.length + 1;
+                var newExperience = {
+                    "idExperience":newIdExperience,
+                    "date":date,
+                    "startTime":startTime,
+                    "endTime":endTime,
+                    "time":time,
+                    "distance":distance,
+                    "idWeather":theIdWeather, 
+                    "idRoadType":theIdRoadType, 
+                    "idTrafficType":theIdTrafficType, 
+                    "idTransmissionType":theIdTransmission
+                }
+                
+                console.log(newExperience);
+                listExperiences.push(newExperience);
+                console.log(listExperiences);
+
+                var listExperiencesString = JSON.stringify(listExperiences);
+                localStorage.setItem('listExperiences', listExperiencesString);
+                
+                console.log(listExperiencesString);
+                alert("Experience saved!");
+
+                document.getElementById('formExperience').reset();
+            }
+            
+            console.log(listWeather);
+            console.log(listRoadTypes);
+            console.log(listTrafficTypes);
+            console.log(listTransmissionTypes);
+            console.log(listExperiences);
+        </script>
+    </head>
+    <body>
+        <header><h1>Web form for the driving experience</h1>
+        <h2>See all your driving experiences: <a href="https://emiliaveron.alwaysdata.net/Driving/SeeExperiences">[Link]</a></h2><br>
+        <h2>Listen to this cool Ryan Gosling Drive audio while you're filling the form :D</h2></header>
+        <div class="ryangosling">
+        <audio id="ryan" controls loop>
+            <source src="ryangosling.mp3" type="audio/mpeg">
+            your browser doesn't support my sigma Ryan Gosling Audio :(
+        </audio></div>
+        <main>
+        <fieldset><legend>Fill this form</legend><br>
+        <form id="formExperience" method="post">
+            <h3>To see all your driving experiences, click the link in the beginning of the site!</h3><br>
+            The date of the experience  <input type="date" id="date" required><br><br>
+            The start time  <input type="time" id="startTime" required><br><br>
+            The end time  <input type="time" id="endTime" required><br><br>
+            The distance in kilometers  <input type="number" min=0 id="distanceKM" placeholder="A number here" required><br><br>
+
+            <br><br>
+            
+
+            <label for="idWeather">Enter the weather condition<br></label>
+            <select name="idWeather" id="idWeather" required>
+                <script>
+                    listWeather.forEach(function(item,index){
+                        let option=`<option value="${item.idWeather}">${item.weather}</option?>`
+                        document.getElementById('idWeather').insertAdjacentHTML('beforeend',option);
+                    });
+                </script> 
+            </select>
+            <br><br>
+            <label for="idRoadType">Enter the road type<br></label>
+            <select name="idRoadType" id="idRoadType" required>
+                <script>
+                    listRoadTypes.forEach(function(item,index){
+                        let option=`<option value="${item.idRoadType}">${item.roadType}</option?>`
+                        document.getElementById('idRoadType').insertAdjacentHTML('beforeend',option);
+                    });
+                </script> 
+            </select>
+            <br><br>
+            <label for="idTrafficType">Enter the heaviness of the traffic<br></label>
+            <select name="idTrafficType" id="idTrafficType" required>
+                <script>
+                    listTrafficTypes.forEach(function(item,index){
+                        let option=`<option value="${item.idTrafficType}">${item.trafficType}</option?>`
+                        document.getElementById('idTrafficType').insertAdjacentHTML('beforeend',option);
+                    });
+                </script>
+            </select>
+            <br><br>
+            <label for="idTransmissionType">Enter the transmission type of the car<br></label>
+            <select name="idTransmissionType" id="idTransmission" required>
+                <script>
+                    listTransmissionTypes.forEach(function(item,index){
+                        let option=`<option value="${item.idTransmission}">${item.transmissionType}</option?>`
+                        document.getElementById('idTransmission').insertAdjacentHTML('beforeend',option);
+                    });
+                </script>
+            </select>
+            <br><br>
+
+            <button type="submit" onclick="saveData()">Send</button><br><br>
+        </form>
+        </fieldset>
+        </main>
+
+        <footer>
+            <fieldset>
+                <h2><span>Information about the creator</span></h2>
+                    <p>Emiliya Yavarova - UFAZ CS-22 student</p>
+                    <address>
+                        Email: <a href="mailto:e.yavarova@ufaz.az">e.yavarova@ufaz.az</a><br>
+                        Phone number: <a href="tel:+1234567890">+(99451)-491-67-28</a>
+                    </address>
+            </fieldset>
+        </footer>
+    </body>
+</html>
+

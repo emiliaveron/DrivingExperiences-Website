@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Geolocation API</title>
+<style>
+   body, button {font-family: Verdana;font-size: 14pt;}
+   #position {width:450px;line-height: 40px;border:1px red solid;}
+</style>   
+<script type = "text/javascript">
+		
+function showLocation(position) {
+var latitude = position.coords.latitude;
+var longitude = position.coords.longitude;
+document.getElementById('position').innerHTML=`Latitude : ${latitude} - Longitude : ${longitude}<br>Google Map : <span style="user-select: all;cursor: pointer;">${latitude}, ${longitude}</span>`;
+
+}//end func
+
+
+			
+function getLocation() {
+
+if(navigator.geolocation) {
+//https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition               
+navigator.geolocation.getCurrentPosition(showLocation);
+} else {
+document.getElementById('position').innerHTML="Sorry, browser does not support geolocation!";
+}
+}//end func
+			
+</script>
+</head>
+<body>
+<main>     
+<form>
+<button type="button" onclick = "getLocation();">Get Location</button>
+</form>
+
+<section id="position">Latitude : ? - Longitude : ?</section>      
+</main>       
+   </body>
+</html>
